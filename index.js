@@ -11,10 +11,12 @@ app.get('/', async (req, res) => {
     if (url === undefined) {
         res.status(400);
         res.send('Please provide url parameter');
+        return;
     }
 
     try {
-        res.send(await fetch(url));
+        await fetch(url)
+        res.send("OK");
     } catch (error) {
         res.status(404);
         res.send(error);
